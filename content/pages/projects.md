@@ -4,7 +4,7 @@ Slug: projects
 A selection of things I have built, mostly open source, newest first. More on [GitHub](https://github.com/rosualinpetru).
 
 <div class="entry">
-  <div class="title">Verifiable CKKS library</div>
+  <div class="title"><a href="https://github.com/vfhe/vfhe">vfhe — Verifiable CKKS library</a></div>
   <div class="detail">2026 – present · C · Python · CKKS · SNARKs</div>
   <div class="detail">An open-source library for verifiable CKKS homomorphic encryption, my current work at IMDEA Software Institute — including performance-critical polynomial arithmetic tuned with CPU intrinsics and an end-to-end verifiable encrypted inference proof of concept.</div>
 </div>
