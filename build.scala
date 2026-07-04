@@ -152,7 +152,7 @@ def paletteCss(h: Float): String =
 def faviconSvg(accent: String): String =
   s"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="22" fill="$accent"/>
-  <text x="50" y="68" font-family="Georgia, serif" font-size="52" fill="#ffffff" text-anchor="middle">ar</text>
+  <text x="50" y="64" font-family="Georgia, serif" font-size="42" fill="#ffffff" text-anchor="middle">rap</text>
 </svg>
 """
 
