@@ -1,0 +1,235 @@
+/* Minimal, typography-first theme.
+   All colors come from /css/palette.css, which build.scala generates from the
+   dominant hue of the portrait photo — this file never hardcodes a color. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  max-width: 44rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1.0625rem/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accent bar across the very top of the page */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  z-index: 10;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.site-name {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--fg);
+  text-decoration: none;
+  letter-spacing: -0.015em;
+}
+
+.site-name:hover { color: var(--accent); }
+
+.site-header nav {
+  display: flex;
+  gap: 1.15rem;
+  flex-wrap: wrap;
+}
+
+.site-header nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  padding-bottom: 2px;
+}
+
+.site-header nav a:hover { color: var(--accent); }
+
+.site-header nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Hero (homepage) */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2.25rem;
+}
+
+.hero h1 { margin: 0 0 0.4rem; }
+
+.hero .lede { margin: 0; }
+
+.portrait {
+  width: 132px;
+  height: 132px;
+  flex: none;
+  border-radius: 26px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  box-shadow: 0 6px 24px -10px var(--accent-soft);
+}
+
+/* Typography */
+h1 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  margin: 2.5rem 0 0.85rem;
+}
+
+h3 { font-size: 1.0625rem; margin: 1.75rem 0 0.5rem; }
+
+p, ul, ol { margin: 0 0 1rem; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent-soft);
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+blockquote {
+  margin: 1.25rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent-soft);
+  color: var(--muted);
+}
+
+.lede { color: var(--muted); font-size: 1.0625rem; }
+
+.meta, time { color: var(--muted); font-size: 0.9375rem; }
+
+/* Code */
+code, pre {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 5px;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+pre code { background: none; padding: 0; }
+
+/* Post list (blog index) */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem -0.75rem;
+}
+
+.post-list li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+}
+
+.post-list li:hover { background: var(--surface); }
+
+.post-list time {
+  flex: 0 0 6.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-list a { text-decoration: none; font-weight: 500; }
+.post-list a:hover { text-decoration: underline; }
+
+/* Publications / projects entries as soft cards */
+.entry {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1.05rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.15s ease;
+}
+
+.entry:hover { border-color: var(--accent-soft); }
+
+.entry .title { font-weight: 600; margin-bottom: 0.2rem; }
+.entry .title a { text-decoration: none; color: var(--fg); }
+.entry .title a:hover { color: var(--accent); text-decoration: underline; }
+.entry .detail { color: var(--muted); font-size: 0.9375rem; margin-bottom: 0.25rem; }
+.entry .detail:last-child { margin-bottom: 0; }
+
+/* Post */
+.post header { margin-bottom: 2rem; }
+.post h1 { margin-bottom: 0.35rem; }
+.post img { max-width: 100%; border-radius: 10px; }
+.back { margin-top: 3rem; }
+
+/* Footer */
+.site-footer {
+  margin-top: 4.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.site-footer .social { display: flex; gap: 1.15rem; flex-wrap: wrap; }
+.site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+.colophon { color: var(--muted); }
+
+/* Tables (for benchmark-style blog posts) */
+table { border-collapse: collapse; width: 100%; margin: 1.25rem 0; font-size: 0.9375rem; }
+th, td { text-align: left; padding: 0.45rem 0.75rem 0.45rem 0; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; }
+
+/* Laika syntax highlighting — accent-toned, works on both themes */
+code .keyword { color: var(--accent); font-weight: 600; }
+code .string-literal, code .char-literal { color: var(--accent-soft); }
+code .comment, code .doc-tag { color: var(--muted); font-style: italic; }
+code .type-name, code .declaration-name { font-weight: 600; }
+code .number-literal, code .boolean-literal, code .literal-value { color: var(--accent-soft); }
+
+@media (max-width: 520px) {
+  .post-list li { flex-direction: column; gap: 0; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+}
