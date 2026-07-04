@@ -15,12 +15,12 @@ I like working at the boundary between research and engineering: taking cryptogr
 
 ## What I have worked on
 
-- **Verifiable FHE** — an open-source library for verifiable CKKS homomorphic encryption with SNARKs, at IMDEA Software Institute.
+- **Verifiable FHE** — an open-source library for verifiable CKKS homomorphic encryption with SNARKs, at the [IMDEA Software Institute](https://software.imdea.org/).
 - **Space cryptography** — at the [European Space Agency](https://www.esa.int/), I built a ground-segment cryptographic service (encryption, signatures, PKI, hybrid key negotiation) and researched post-quantum certificate formats for space PKI.
 - **Privacy-preserving systems** — at [TU Delft](https://www.tudelft.nl/), I led the design of MedTech Chain, a blockchain platform for privacy-preserving medical device data research, using threshold homomorphic encryption and differential privacy.
-- **Backend & infrastructure engineering** — instant payment systems at ING Bank, cloud and on-premises platforms as a DevOps engineer. This is where I learned to care about systems that must not fall over.
+- **Backend & infrastructure engineering** — instant payment systems at [ING Bank](https://www.ing.ro/), cloud and on-premises platforms as a DevOps engineer. This is where I learned to care about systems that must not fall over.
 
-I hold an MSc in Computer Science (Cybersecurity, *cum laude*) from TU Delft and engineering degrees from Politehnica University of Timișoara. I have authored [peer-reviewed papers](/research/) on space PKI, privacy-preserving blockchain systems, and static analysis, with two awards along the way.
+I have authored [peer-reviewed papers](/research/) on space PKI, privacy-preserving blockchain systems, and static analysis — a few of them picked up awards along the way. Education and the full track record are in my [CV](/cv.pdf).
 
 Every now and then I write about what I am building on the [blog](/blog/).
 
