@@ -4,23 +4,23 @@ Slug: projects
 A selection of things I have built, mostly open source, newest first. More on [GitHub](https://github.com/rosualinpetru).
 
 <div class="entry">
-  <div class="title"><a href="https://github.com/vfhe/vfhe">vfhe — Verifiable CKKS library</a></div>
+  <div class="title"><a href="https://github.com/vfhe/vfhe">vfhe (Verifiable CKKS library)</a></div>
   <div class="detail">2026 – present · C · Python · CKKS · SNARKs</div>
-  <div class="detail">An open-source library for verifiable CKKS homomorphic encryption, my current work at IMDEA Software Institute — including performance-critical polynomial arithmetic tuned with CPU intrinsics and an end-to-end verifiable encrypted inference proof of concept.</div>
+  <div class="detail">An open-source library for verifiable CKKS homomorphic encryption, my current work at IMDEA Software Institute.</div>
   <div class="detail"><a href="https://github.com/vfhe/vfhe">github.com/vfhe/vfhe</a> &rarr;</div>
 </div>
 
 <div class="entry">
   <div class="title"><a href="https://github.com/rosualinpetru/c509-native">c509-native</a></div>
   <div class="detail">2024 – 2025 · C++ · OpenSSL · ML-KEM · ML-DSA · CBOR</div>
-  <div class="detail">The first open-source toolkit for C509 certificates with composite post-quantum support, built during my work on space PKI at ESA. Used to quantify how CBOR encoding compares to DER at scale — CRLs shrink by 55% at 1k entries.</div>
+  <div class="detail">An open-source toolkit for C509 certificates with composite post-quantum support, built during my work on space PKI at ESA. Used to quantify how CBOR encoding compares to DER at scale: CRLs shrink by 55% at 1k entries.</div>
   <div class="detail"><a href="https://github.com/rosualinpetru/c509-native">github.com/rosualinpetru/c509-native</a> &rarr;</div>
 </div>
 
 <div class="entry">
-  <div class="title"><a href="https://github.com/rosualinpetru/ers">ers — Encrypted Range Search</a></div>
+  <div class="title"><a href="https://github.com/rosualinpetru/ers">ers (Encrypted Range Search)</a></div>
   <div class="detail">2024 – 2025 · Python</div>
-  <div class="detail">Research prototypes of encrypted range search schemes, using Hilbert curves for multi-dimensional query processing, with synthetic benchmarks to evaluate the trade-offs.</div>
+  <div class="detail">Research prototypes of encrypted range search schemes, developed during my MSc at TU Delft, using Hilbert curves for multi-dimensional query processing, with synthetic benchmarks to evaluate the trade-offs.</div>
   <div class="detail"><a href="https://github.com/rosualinpetru/ers">github.com/rosualinpetru/ers</a> &rarr;</div>
 </div>
 

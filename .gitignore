@@ -1,4 +1,5 @@
-.venv/
 output/
-__pycache__/
+.scala-build/
+.bsp/
+.metals/
 .DS_Store

@@ -22,7 +22,7 @@ jobs:
       - uses: VirtusLab/scala-cli-setup@v1
         with:
           jvm: temurin:21
-      - run: scala-cli run build.scala -- --site-url https://rosualinpetru.github.io
+      - run: scala-cli run build.scala
       - uses: actions/upload-pages-artifact@v3
         with:
           path: output

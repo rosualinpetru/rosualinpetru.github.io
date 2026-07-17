@@ -4,12 +4,10 @@
 
 // Static site generator for rosualinpetru.github.io.
 //
-//   scala-cli run build.scala                                        -> local build (output/)
-//   scala-cli run build.scala -- --site-url https://example.com      -> production build (adds feed URL metadata)
+//   scala-cli run build.scala   -> builds the site into output/
 //
 // Content layout:
 //   content/pages/*.md  -> standalone pages ("home" slug becomes index.html)
-//   content/blog/*.md   -> blog posts, listed at /blog/ and in the atom feed
 //   content/extra/*     -> copied verbatim to the site root (cv.pdf)
 //   static/             -> copied verbatim (stylesheet, images)
 //
@@ -22,14 +20,11 @@ import laika.format.{HTML, Markdown}
 import laika.config.SyntaxHighlighting
 
 import java.awt.Color
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 import javax.imageio.ImageIO
 
 val SiteName    = "Alin-Petru Roșu"
 val Description =
-  "Alin-Petru Roșu — cybersecurity engineer and researcher specialising in applied cryptography and PKI."
+  "Alin-Petru Roșu, cybersecurity engineer and researcher specialising in applied cryptography and PKI."
 
 // Set to Some("#146b3a") (any hex) to pin the accent hue instead of deriving it from the portrait.
 val AccentOverride: Option[String] = None
@@ -38,16 +33,17 @@ val NavLinks = List(
   "About"    -> "/",
   "Research" -> "/research/",
   "Projects" -> "/projects/",
-  "Blog"     -> "/blog/",
   "CV"       -> "/cv.pdf"
 )
 
 val SocialLinks = List(
   "GitHub"   -> "https://github.com/rosualinpetru",
   "LinkedIn" -> "https://linkedin.com/in/rosualinpetru",
-  "ORCID"    -> "https://orcid.org/0009-0005-8537-7265",
-  "Email"    -> "mailto:rosualinpetru@gmail.com"
+  "ORCID"    -> "https://orcid.org/0009-0005-8537-7265"
 )
+
+// Rendered as plain text (not a mailto link) to keep it away from address crawlers.
+val Email = "rosualinpetru (at) gmail.com"
 
 val root    = os.pwd
 val content = root / "content"
@@ -60,15 +56,9 @@ val markdown = Transformer
   .withRawContent // allow raw HTML blocks inside markdown (hero, research/projects entries)
   .build
 
-val displayDate = DateTimeFormatter.ofPattern("MMM yyyy", Locale.ENGLISH)
-
 final case class Doc(meta: Map[String, String], html: String):
   def title: String = meta.getOrElse("title", sys.error(s"missing Title in $meta"))
   def slug: String  = meta.getOrElse("slug", sys.error(s"missing Slug for '$title'"))
-
-final case class Post(doc: Doc, date: LocalDate):
-  export doc.{title, slug}
-  def url: String = s"/blog/$slug/"
 
 def parse(path: os.Path): Doc =
   val lines          = os.read(path).linesIterator.toList
@@ -160,7 +150,7 @@ def faviconSvg(accent: String): String =
 // Layout
 // ---------------------------------------------------------------------------
 
-def layout(title: String, main: String, active: String, feedUrl: Option[String]): String =
+def layout(title: String, main: String, active: String): String =
   val nav = NavLinks
     .map((n, l) =>
       val cls = if l == active then """ class="active"""" else ""
@@ -168,14 +158,8 @@ def layout(title: String, main: String, active: String, feedUrl: Option[String])
     )
     .mkString("\n      ")
   val social = SocialLinks
-    .map((n, l) =>
-      val external = if l.startsWith("mailto") then "" else """ rel="me noopener" target="_blank""""
-      s"""<a href="$l"$external>$n</a>"""
-    )
-    .mkString("\n      ")
-  val feed = feedUrl.fold("")(u =>
-    s"""\n  <link rel="alternate" type="application/atom+xml" title="$SiteName — blog feed" href="$u">"""
-  )
+    .map((n, l) => s"""<a href="$l" rel="me noopener" target="_blank">$n</a>""")
+    .mkString("\n      ") + s"\n      <span>$Email</span>"
   s"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,7 +169,7 @@ def layout(title: String, main: String, active: String, feedUrl: Option[String])
   <meta name="description" content="$Description">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/palette.css">
-  <link rel="stylesheet" href="/css/style.css">$feed
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header class="site-header">
@@ -215,65 +199,11 @@ def pageHtml(doc: Doc): String =
   $heading${doc.html}
 </article>"""
 
-def postHtml(post: Post): String =
-  s"""<article class="post">
-  <header>
-    <h1>${escape(post.title)}</h1>
-    <p class="meta"><time datetime="${post.date}">${post.date.format(displayDate)}</time></p>
-  </header>
-  ${post.doc.html}
-  <p class="back"><a href="/blog/">&larr; All posts</a></p>
-</article>"""
-
-def blogIndexHtml(posts: List[Post]): String =
-  val items =
-    if posts.isEmpty then "<li>No posts yet.</li>"
-    else
-      posts
-        .map(p => s"""<li>
-    <time datetime="${p.date}">${p.date.format(displayDate)}</time>
-    <a href="${p.url}">${escape(p.title)}</a>
-  </li>""")
-        .mkString("\n  ")
-  s"""<h1>Blog</h1>
-<p class="lede">Occasional technical notes on cryptography, security engineering, and things I am building.</p>
-<ul class="post-list">
-  $items
-</ul>"""
-
-def atomFeed(posts: List[Post], siteUrl: String): String =
-  def ts(d: LocalDate) = s"${d}T00:00:00Z"
-  val updated          = posts.headOption.map(p => ts(p.date)).getOrElse(ts(LocalDate.of(2026, 1, 1)))
-  val entries = posts
-    .map(p => s"""  <entry>
-    <title>${escape(p.title)}</title>
-    <link href="$siteUrl${p.url}"/>
-    <id>$siteUrl${p.url}</id>
-    <updated>${ts(p.date)}</updated>
-    <content type="html">${escape(p.doc.html)}</content>
-  </entry>""")
-    .mkString("\n")
-  s"""<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>$SiteName</title>
-  <link href="$siteUrl/"/>
-  <link rel="self" href="$siteUrl/feeds/all.atom.xml"/>
-  <id>$siteUrl/</id>
-  <updated>$updated</updated>
-$entries
-</feed>
-"""
-
 // ---------------------------------------------------------------------------
 // Build
 // ---------------------------------------------------------------------------
 
-@main def build(args: String*): Unit =
-  val siteUrl = args.toList match
-    case "--site-url" :: url :: _ => Some(url.stripSuffix("/"))
-    case _                        => None
-  val feedUrl = siteUrl.map(_ + "/feeds/all.atom.xml")
-
+@main def build(): Unit =
   os.remove.all(output)
   os.makeDir.all(output)
 
@@ -283,29 +213,8 @@ $entries
     val (dest, active) =
       if page.slug == "home" then (output / "index.html", "/")
       else (output / page.slug / "index.html", s"/${page.slug}/")
-    os.write.over(dest, layout(s"${page.title} — $SiteName", pageHtml(page), active, feedUrl), createFolders = true)
+    os.write.over(dest, layout(s"${page.title} · $SiteName", pageHtml(page), active), createFolders = true)
   }
-
-  // Posts: content/blog/*.md, newest first.
-  val posts = os
-    .list(content / "blog")
-    .filter(_.ext == "md")
-    .map(parse)
-    .map(d => Post(d, LocalDate.parse(d.meta.getOrElse("date", sys.error(s"missing Date in '${d.title}'")))))
-    .sortBy(_.date)(Ordering[LocalDate].reverse)
-    .toList
-  posts.foreach { post =>
-    val dest = output / "blog" / post.slug / "index.html"
-    os.write.over(dest, layout(s"${post.title} — $SiteName", postHtml(post), "/blog/", feedUrl), createFolders = true)
-  }
-  os.write.over(
-    output / "blog" / "index.html",
-    layout(s"Blog — $SiteName", blogIndexHtml(posts), "/blog/", feedUrl),
-    createFolders = true
-  )
-
-  // Feed (production builds only — needs an absolute site URL).
-  siteUrl.foreach(url => os.write.over(output / "feeds" / "all.atom.xml", atomFeed(posts, url), createFolders = true))
 
   // Verbatim files (before the generated palette: copy.over replaces whole directories).
   os.list(content / "extra").foreach(f => os.copy.over(f, output / f.last))
@@ -317,4 +226,4 @@ $entries
   os.write.over(output / "favicon.svg", faviconSvg(hex(hue, 0.62f, 0.36f)))
 
   println(s"Accent hue ${(hue * 360).round}° -> ${hex(hue, 0.62f, 0.36f)}")
-  println(s"Built ${pages.size} pages and ${posts.size} posts into $output")
+  println(s"Built ${pages.size} pages into $output")

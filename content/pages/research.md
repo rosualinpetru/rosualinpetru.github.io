@@ -1,9 +1,9 @@
 Title: Research
 Slug: research
 
-My research interest is **applied cryptography in operationally constrained environments** — the gap between cryptographic theory and what can actually be deployed. Over time my focus has shifted from integrating cryptographic techniques into larger systems toward the design, implementation, and assessment of cryptographic protocols themselves, particularly fully homomorphic encryption and zero-knowledge proofs under real deployment constraints.
+My research interest is **applied cryptography in operationally constrained environments**. Over time my focus has shifted from integrating cryptographic techniques into larger systems toward the design, implementation, and assessment of cryptographic protocols themselves, particularly fully homomorphic encryption and zero-knowledge proofs under real deployment constraints.
 
-## Publications
+## Selected Publications
 
 <div class="entry">
   <div class="title">Towards Minimal Certificates in Federated Space Public Key Infrastructure</div>
@@ -13,7 +13,7 @@ My research interest is **applied cryptography in operationally constrained envi
 
 <div class="entry">
   <div class="title">MedTech Chain: Decentralised, Secure and Privacy-preserving Platform for Medical Device Data Research</div>
-  <div class="detail">IEEE BRAINS, 2024 — paper and demo (<strong>Best Demo Award</strong>)</div>
+  <div class="detail">IEEE BRAINS, 2024 · paper and demo (<strong>Best Demo Award</strong>)</div>
   <div class="detail">Permissioned blockchain with threshold Paillier homomorphic encryption and ε-differential privacy for aggregate queries over medical device telemetry. <a href="https://doi.org/10.1109/brains63024.2024.10732045">Paper DOI</a> · <a href="https://doi.org/10.1109/brains63024.2024.10732467">Demo DOI</a> · <a href="https://github.com/MedTechChain">Code</a></div>
 </div>
 
