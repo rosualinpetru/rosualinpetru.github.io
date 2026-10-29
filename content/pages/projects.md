@@ -4,30 +4,37 @@ Slug: projects
 A selection of things I have built, mostly open source, newest first. More on [GitHub](https://github.com/rosualinpetru).
 
 <div class="entry">
-  <div class="title"><a href="https://github.com/vfhe/vfhe">vfhe (Verifiable CKKS library)</a></div>
-  <div class="detail">2026 – present · C · Python · CKKS · SNARKs</div>
-  <div class="detail">An open-source library for verifiable CKKS homomorphic encryption, my current work at IMDEA Software Institute.</div>
-  <div class="detail"><a href="https://github.com/vfhe/vfhe">github.com/vfhe/vfhe</a> &rarr;</div>
+  <div class="title"><a href="https://github.com/vfhe/vfhe">vfhe (Verifiable FHE library)</a></div>
+  <div class="detail">2026 – present · C · Python · CKKS · SNARKs · AVX-512 · NEON</div>
+  <div class="detail">An open-source library for zero-knowledge proofs and verifiable CKKS homomorphic encryption, my current work at IMDEA Software Institute. I designed and implemented the verifiable CKKS core, optimised the polynomial arithmetic with CPU intrinsics and profiling-guided tuning, and built a machine learning proof of concept for end-to-end verifiable inference over encrypted data. Apache 2.0, on PyPI as <code>vfhe</code>.</div>
+  <div class="detail"><a href="https://github.com/vfhe/vfhe">github.com/vfhe/vfhe</a> &rarr; · <a href="https://vfhe.ai">vfhe.ai</a> &rarr;</div>
+</div>
+
+<div class="entry">
+  <div class="title"><a href="https://github.com/rosualinpetru/addlib">addlib</a></div>
+  <div class="detail">2026 · C · Python · CFFI</div>
+  <div class="detail">A small, complete template for a Python library backed by a C core: clean C/Python boundary, cross-platform wheels, supply-chain security, and signed automated releases. The scaffolding is the point; the C does nothing more than add two numbers.</div>
+  <div class="detail"><a href="https://github.com/rosualinpetru/addlib">github.com/rosualinpetru/addlib</a> &rarr;</div>
 </div>
 
 <div class="entry">
   <div class="title"><a href="https://github.com/rosualinpetru/c509-native">c509-native</a></div>
-  <div class="detail">2024 – 2025 · C++ · OpenSSL · ML-KEM · ML-DSA · CBOR</div>
-  <div class="detail">An open-source toolkit for C509 certificates with composite post-quantum support, built during my work on space PKI at ESA. Used to quantify how CBOR encoding compares to DER at scale: CRLs shrink by 55% at 1k entries.</div>
+  <div class="detail">2024 – 2025 · C++ · OpenSSL · ML-KEM · ML-DSA · X.509 · C509 · CBOR</div>
+  <div class="detail">The first open-source toolkit for composite C509 certificates, combining lattice-based ML-KEM and ML-DSA with ECC, built during my work on post-quantum space PKI at ESA. Used to quantify how CBOR encoding compares to DER at scale: CRLs shrink by 55% at 1k entries.</div>
   <div class="detail"><a href="https://github.com/rosualinpetru/c509-native">github.com/rosualinpetru/c509-native</a> &rarr;</div>
 </div>
 
 <div class="entry">
   <div class="title"><a href="https://github.com/rosualinpetru/ers">ers (Encrypted Range Search)</a></div>
   <div class="detail">2024 – 2025 · Python</div>
-  <div class="detail">Research prototypes of encrypted range search schemes, developed during my MSc at TU Delft, using Hilbert curves for multi-dimensional query processing, with synthetic benchmarks to evaluate the trade-offs.</div>
+  <div class="detail">Research prototypes of encrypted range search schemes, developed during my MSc at TU Delft, using Hilbert curves for multi-dimensional query processing, with synthetic benchmarks to evaluate the algorithmic trade-offs.</div>
   <div class="detail"><a href="https://github.com/rosualinpetru/ers">github.com/rosualinpetru/ers</a> &rarr;</div>
 </div>
 
 <div class="entry">
   <div class="title"><a href="https://github.com/MedTechChain">MedTech Chain</a></div>
-  <div class="detail">2024 · Hyperledger Fabric · Java · Spring Boot · Privacy-Enhancing Technologies</div>
-  <div class="detail">A decentralised platform for privacy-preserving research on medical device data. Threshold Paillier homomorphic encryption and differential privacy enable aggregate statistics without per-record decryption. Best Demo Award at IEEE BRAINS 2024; candidate architecture in the EU-funded SEPTON initiative.</div>
+  <div class="detail">2024 · Hyperledger Fabric · Java · Spring Boot · Protobuf · Privacy-Enhancing Technologies</div>
+  <div class="detail">A decentralised platform for privacy-preserving research on medical device data, built with a team of four at TU Delft. Threshold Paillier homomorphic encryption, ε-differential privacy, and integer linear programming enable grouped counting without per-record decryption. Best Demo Award at IEEE BRAINS 2024; candidate architecture in the EU-funded SEPTON initiative.</div>
   <div class="detail"><a href="https://github.com/MedTechChain">github.com/MedTechChain</a> &rarr;</div>
 </div>
 

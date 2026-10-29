@@ -27,6 +27,7 @@ The full record is on [ORCID](https://orcid.org/0009-0005-8537-7265).
 
 ## Selected talks
 
+- Speaker, *CYSAT Madrid*, 2026
 - Panellist, *Romanian Space Initiative International*, 2025
-- Presenter, *Security for Space Systems Conference*, 2025
+- Author, *Security for Space Systems Conference*, 2025
 - Presenter, *CCSDS Spring Meeting*, 2025
