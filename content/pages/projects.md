@@ -11,13 +11,6 @@ A selection of things I have built, mostly open source, newest first. More on [G
 </div>
 
 <div class="entry">
-  <div class="title"><a href="https://github.com/rosualinpetru/addlib">addlib</a></div>
-  <div class="detail">2026 · C · Python · CFFI</div>
-  <div class="detail">A small, complete template for a Python library backed by a C core: clean C/Python boundary, cross-platform wheels, supply-chain security, and signed automated releases. The scaffolding is the point; the C does nothing more than add two numbers.</div>
-  <div class="detail"><a href="https://github.com/rosualinpetru/addlib">github.com/rosualinpetru/addlib</a> &rarr;</div>
-</div>
-
-<div class="entry">
   <div class="title"><a href="https://github.com/rosualinpetru/c509-native">c509-native</a></div>
   <div class="detail">2024 – 2025 · C++ · OpenSSL · ML-KEM · ML-DSA · X.509 · C509 · CBOR</div>
   <div class="detail">The first open-source toolkit for composite C509 certificates, combining lattice-based ML-KEM and ML-DSA with ECC, built during my work on post-quantum space PKI at ESA. Used to quantify how CBOR encoding compares to DER at scale: CRLs shrink by 55% at 1k entries.</div>
