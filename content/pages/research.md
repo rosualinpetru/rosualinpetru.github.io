@@ -1,7 +1,7 @@
 Title: Research
 Slug: research
 
-My research interest is **applied cryptography in operationally constrained environments**. Over time my focus has shifted from integrating cryptographic techniques into larger systems toward the design, implementation, and assessment of cryptographic protocols themselves, particularly fully homomorphic encryption and zero-knowledge proofs under real deployment constraints.
+I am a cryptography research engineer with a strong interest in **public key infrastructure** and **secure space communications**. I have delivered satellite ground-segment cryptographic services and open-source libraries for privacy-enhancing technologies, and I am the author of scientific papers, including work on space PKI. I am motivated to explore cryptography and secure communications in critical infrastructure, with a drive for continuous learning.
 
 ## Selected Publications
 
